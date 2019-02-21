@@ -31,7 +31,7 @@ class NaiveBayes:
         for row_index, row in x_train.iterrows():
             feature_index = 0
             for feature in row:
-                if int(feature) == 1:
+                if int(feature) > 0:
                     if y_train.iloc[row_index][0] == 1:
                         cond_y1[feature_index] += 1
                     else:
@@ -58,7 +58,7 @@ class NaiveBayes:
         for index, row in x_test.iterrows():
             feature_index = 0
             for feature in row:
-                if int(feature) == 1:
+                if int(feature) > 0:
                     prob_y1 *= self.cond_class_1[feature_index]
                     prob_y0 *= self.cond_class_0[feature_index]
                 else:
