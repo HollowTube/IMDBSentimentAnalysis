@@ -5,6 +5,7 @@ Created on Fri Feb 22 06:08:49 2019
 @author: Mark Zhu
 """
 import os
+from MutualInfo import keepImportantWords
 
 pos_path = "..\data\\train\\pos\\"
 neg_path = "..\data\\train\\neg\\"
@@ -26,5 +27,12 @@ for file in os.listdir(pos_path):
     pos_review_list.append(fh.read())
     fh.close()
 
+x_pos = []
+x_neg = []
+
 for rev in neg_review_list:
-    print(rev)
+    x_neg.append(rev.split())
+for rev in pos_review_list:
+    x_pos.append(rev.split())
+    
+print(keepImportantWords(10,x_pos,x_neg))
