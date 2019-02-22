@@ -18,14 +18,15 @@ def negationHandling(x_train):
     filteredMatrix = []
     for reviews in x_train:
         filteredReviews = []
-        for index in range(len(reviews)-1):
-            if reviews[index] in negation_words:
-                reviews[index+1] = "neg_"+reviews[index+1]
-                
-        for words in reviews:
-            if words not in negation_words:
-                filteredReviews.append(words)
-        filteredMatrix.append(filteredReviews)
+        word_list = reviews.split(' ')
+        for index in range(len(word_list)-1):
+            if word_list[index] in negation_words:
+                word_list[index+1] = "neg_"+word_list[index+1]
+                word_list.pop(index)
+
+        filteredMatrix.append(' '.join(word_list))
 
     return filteredMatrix
             
+foo = ["not bad great", "barely good alright"]
+print(negationHandling(foo))
