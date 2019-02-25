@@ -18,14 +18,14 @@ def keepImportantWords(n,x_pos,x_neg):
     return filteredWords
         
 
-def pointwiseMutualInfo(x_pos,x_neg):
+def pointwiseMutualInfo(x_pos, x_neg):
     wordCount = 0
     uniqueWords = {}
     
     for reviews in x_pos:
         for words in reviews:
             wordCount+=1
-        
+
             if words not in uniqueWords:
                 uniqueWords[words] = [1,1,0]
             else:
